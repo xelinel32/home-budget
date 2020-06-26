@@ -40,7 +40,7 @@ export default new Vuex.Store({
             name,
           });
       } catch (error) {
-        console.log(error);
+        commit('SET_ERROR', error);
         throw error;
       }
     },
