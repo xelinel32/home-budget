@@ -10,11 +10,11 @@
             id="name"
             type="text"
             v-model.trim="title"
-            :class="{ invalid: $v.title.dirty && !$v.title.required }"
+            :class="{ invalid: $v.title.$dirty && !$v.title.required }"
           />
           <label for="name">Название</label>
           <span
-            v-if="$v.title.dirty && !$v.title.required"
+            v-if="$v.title.$dirty && !$v.title.required"
             class="helper-text invalid"
             >Введите название</span
           >
@@ -25,11 +25,11 @@
             id="limit"
             type="number"
             v-model.number="limit"
-            :class="{ invalid: $v.limit.dirty && !$v.limit.minValue }"
+            :class="{ invalid: $v.limit.$dirty && !$v.limit.minValue }"
           />
           <label for="limit">Лимит</label>
           <span
-            v-if="$v.limit.dirty && !$v.limit.minValue"
+            v-if="$v.limit.$dirty && !$v.limit.minValue"
             class="helper-text invalid"
             >Минимальная величина {{ $v.limit.$params.minValue.min }}
           </span>
