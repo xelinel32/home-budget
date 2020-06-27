@@ -125,6 +125,32 @@ export default new Vuex.Store({
         throw error;
       }
     },
+    async CREATE_RECORD({ dispatch, commit }, record) {
+      try {
+        const uid = await dispatch('GET_USER_ID');
+        return await firebase
+          .database()
+          .ref(`users/${uid}/records`)
+          .push(record);
+      } catch (error) {
+        commit('SET_ERROR', error);
+        throw error;
+      }
+    },
+    async UPDATE_INFO({ dispatch, commit, getters }, toUpdate) {
+      try {
+        const uid = await dispatch('GET_USER_ID');
+        const updateData = { ...getters.info, ...toUpdate };
+        await firebase
+          .database()
+          .ref(`/users/${uid}/info`)
+          .update(updateData);
+        commit('SET_INFO', updateData);
+      } catch (error) {
+        commit('SET_ERROR', error);
+        throw error;
+      }
+    },
   },
   getters: {
     GET_ERROR(state) {
