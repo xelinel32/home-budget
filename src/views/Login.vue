@@ -7,13 +7,19 @@
           id="email"
           type="text"
           v-model.trim="email"
-          :class="{ invalid: ($v.email.$dirty && !$v.email.required) || !$v.email.email }"
+          :class="{
+            invalid: ($v.email.$dirty && !$v.email.required) || !$v.email.email,
+          }"
         />
         <label for="email">Email</label>
-        <small v-if="$v.email.$dirty && !$v.email.required" class="helper-text invalid"
+        <small
+          v-if="$v.email.$dirty && !$v.email.required"
+          class="helper-text invalid"
           >Field email is empty</small
         >
-        <small v-else-if="$v.email.$dirty && !$v.email.email" class="helper-text invalid"
+        <small
+          v-else-if="$v.email.$dirty && !$v.email.email"
+          class="helper-text invalid"
           >Email is incorrect</small
         >
       </div>
@@ -21,7 +27,6 @@
         <input
           id="password"
           type="password"
-          class="validate"
           v-model.trim="password"
           :class="{
             invalid:
@@ -30,12 +35,16 @@
           }"
         />
         <label for="password">Пароль</label>
-        <small v-if="$v.password.$dirty && !$v.password.required" class="helper-text invalid"
+        <small
+          v-if="$v.password.$dirty && !$v.password.required"
+          class="helper-text invalid"
           >Password filed is empty</small
         >
-        <small v-else-if="$v.password.$dirty && !$v.password.minLength" class="helper-text invalid"
-          >Password will be {{ $v.password.$params.minLength.min }} symbols, Password -
-          {{ password.length }}</small
+        <small
+          v-else-if="$v.password.$dirty && !$v.password.minLength"
+          class="helper-text invalid"
+          >Password will be {{ $v.password.$params.minLength.min }} symbols,
+          Password - {{ password.length }}</small
         >
       </div>
     </div>

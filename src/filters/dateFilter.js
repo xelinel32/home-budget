@@ -1,4 +1,4 @@
-export default function dateFilter(value, format = 'date') {
+export default function dateFilter(value) {
   return new Intl.DateTimeFormat('ru-RU', {
     hour: '2-digit',
     minute: '2-digit',

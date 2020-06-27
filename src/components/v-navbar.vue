@@ -11,8 +11,13 @@
 
         <ul class="right hide-on-small-and-down">
           <li>
-            <a class="dropdown-trigger black-text" href="#" data-target="dropdown" ref="dropdown">
-              USER NAME
+            <a
+              class="dropdown-trigger black-text"
+              href="#"
+              data-target="dropdown"
+              ref="dropdown"
+            >
+              {{ name.name }}
               <i class="material-icons right">arrow_drop_down</i>
             </a>
 
@@ -38,7 +43,7 @@
 
 <script>
 import dateFilter from '@/filters/dateFilter';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'v-navbar',
   data() {
@@ -59,6 +64,12 @@ export default {
     async logout() {
       await this.LOGOUT;
       this.$router.push('/login?message=logout');
+    },
+  },
+  computed: {
+    ...mapGetters(['GET_INFO']),
+    name() {
+      return this.GET_INFO;
     },
   },
   mounted() {

@@ -25,4 +25,7 @@ export default {
 <style lang="scss">
 @import '~materialize-css/sass/materialize.scss';
 @import 'assets/index.css';
+.app-content {
+  padding-left: 285px;
+}
 </style>
