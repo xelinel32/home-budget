@@ -151,6 +151,25 @@ export default new Vuex.Store({
         throw error;
       }
     },
+    async FETCH_RECORDS({ dispatch, commit }) {
+      try {
+        const uid = await dispatch('GET_USER_ID');
+        const records =
+          (
+            await firebase
+              .database()
+              .ref(`/users/${uid}/records`)
+              .once('value')
+          ).val() || {};
+        return Object.keys(records).map((key) => ({
+          ...records[key],
+          id: key,
+        }));
+      } catch (error) {
+        commit('SET_ERROR', error);
+        throw error;
+      }
+    },
   },
   getters: {
     GET_ERROR(state) {

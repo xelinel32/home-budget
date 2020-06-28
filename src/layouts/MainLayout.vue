@@ -10,7 +10,11 @@
         </div>
       </main>
       <div class="fixed-action-btn">
-        <router-link to="/record" class="btn-floating btn-large blue" href="#">
+        <router-link
+          to="/record"
+          class="btn-floating btn-large blue"
+          v-tooltip="'New'"
+        >
           <i class="large material-icons">add</i>
         </router-link>
       </div>

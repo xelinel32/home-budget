@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import Vuelidate from 'vuelidate';
 import messagePlugin from '@/plugins/message';
+import tooltipPlugin from '@/plugins/tooltip';
 import Loader from '@/components/v-loader';
 import router from './router';
 import store from './store';
@@ -14,6 +15,7 @@ import 'materialize-css/dist/js/materialize';
 Vue.config.productionTip = false;
 
 Vue.use(messagePlugin);
+Vue.directive('tooltip', tooltipPlugin);
 Vue.use(Vuelidate);
 
 Vue.component('Loader', Loader);
