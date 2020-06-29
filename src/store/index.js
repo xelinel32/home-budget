@@ -170,6 +170,41 @@ export default new Vuex.Store({
         throw error;
       }
     },
+    async FETCH_RECORD_BY_ID({ dispatch, commit }, id) {
+      try {
+        const uid = await dispatch('GET_USER_ID');
+        const record =
+          (
+            await firebase
+              .database()
+              .ref(`/users/${uid}/records`)
+              .child(id)
+              .once('value')
+          ).val() || {};
+        return { ...record, id };
+      } catch (error) {
+        commit('SET_ERROR', error);
+        throw error;
+      }
+    },
+    async FETCH_CATEGORY_BY_ID({ dispatch, commit }, id) {
+      try {
+        const uid = await dispatch('GET_USER_ID');
+        const category =
+          (
+            await firebase
+              .database()
+              .ref(`/users/${uid}/categories`)
+              .child(id)
+              .once('value')
+          ).val() || {};
+        debugger;
+        return { ...category, id };
+      } catch (error) {
+        commit('SET_ERROR', error);
+        throw error;
+      }
+    },
   },
   getters: {
     GET_ERROR(state) {
