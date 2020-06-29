@@ -74,7 +74,9 @@ export default {
   },
   mounted() {
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
-      constrainWidth: true,
+      constrainWidth: false,
+      hover: true,
+      alignment: 'right'
     });
     this.interval = setInterval(() => {
       this.date = new Date();
