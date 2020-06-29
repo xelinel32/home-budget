@@ -48,6 +48,7 @@ export default {
 <style lang="scss">
 .v-sidebar {
   .sidenav {
+    position: absolute;
     top: 65px;
     li.active {
       background: #ffb74d;
